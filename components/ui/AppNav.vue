@@ -1,0 +1,251 @@
+<template>
+  <nav class="Navigation">
+    <div class="linksBar">
+      <div v-for="(navLink, index) in navLinks" :key="index" class="link">
+        <nuxt-link :to="navLink.linkUrl">
+          {{ navLink.linkName }}
+        </nuxt-link>
+      </div>
+      <div class="search">
+        <input type="text" placeholder="Busqueda.." spellcheck="false">
+        <button type="button">
+          <b-icon icon="search" scale="0.8" style="color: #2c3443" />
+        </button>
+      </div>
+    </div>
+
+    <div class="titleBar">
+      <div class="logo">
+        <b-iconstack font-scale="5">
+          <b-icon stacked icon="egg-fill" style="color: #2c3443" />
+          <b-icon stacked icon="egg-fill" scale="0.8" style="color: ghostwhite" />
+        </b-iconstack>
+      </div>
+      <div class="title">
+        <h1>FusaNest</h1>
+      </div>
+
+      <div class="account">
+        <div class="accountLink">
+          <nuxt-link to="/login">
+            Login
+          </nuxt-link>
+        </div>
+        <div class="accountLink">
+          <nuxt-link to="/registro">
+            Registrarse
+          </nuxt-link>
+        </div>
+      </div>
+    </div>
+  </nav>
+</template>
+
+<script>
+export default {
+  name: 'Navigation',
+
+  data () {
+    return {
+      navLinks: [
+        {
+          linkName: 'Explorar',
+          linkUrl: '/projects',
+        },
+        {
+          linkName: 'Apps',
+          linkUrl: '/projects',
+        },
+        {
+          linkName: 'Innovación',
+          linkUrl: '/projects',
+        },
+        {
+          linkName: 'Inteligencia Artificial',
+          linkUrl: '/projects',
+        },
+        {
+          linkName: 'Paginas Web',
+          linkUrl: '/projects',
+        },
+        {
+          linkName: 'Videojuegos',
+          linkUrl: '/projects',
+        },
+      ],
+    }
+  },
+}
+</script>
+
+<style scoped>
+
+.linksBar {
+  background: linear-gradient(90deg, #fbc312, #fcdc64);
+  text-align: center;
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  height: auto;
+  top: 0;
+  margin: 0;
+  z-index: 9000;
+  overflow: hidden;
+}
+
+.linksBar .link {
+  display: inline-block;
+  margin: 0;
+  padding: 0.5%;
+  white-space: nowrap;
+  padding-left: 1.5%;
+  padding-right: 1.5%;
+}
+
+.linksBar .link {
+  margin: 0;
+  height: 100%;
+  top: 0;
+  font-size: 1.5rem;
+}
+
+.linksBar .link:hover {
+  border-left: 1px solid #2c3443;
+  border-right: 1px solid #2c3443;
+}
+
+.linksBar .link a {
+  color: #2c3443;
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+
+.linksBar .link a:hover {
+  color: ghostwhite;
+}
+
+.linksBar .search {
+  display: inline-block;
+  margin: 0;
+  white-space: nowrap;
+  padding-right: 5.4%;
+  padding-top: 0.4%;
+  overflow: hidden;
+  float: right;
+  vertical-align: central;
+}
+
+.fa-search {
+  display: inline-block;
+  color: #2c3443;
+  font-size: 19px;
+}
+
+.linksBar .search input[type="text"] {
+  border: none;
+  width: 110%;
+  padding: 2.5%;
+  padding-left: 5.5%;
+  background-color: #2c3443;
+  color: ghostwhite;
+  border-radius: 15px;
+  overflow: hidden;
+  font-size: 15px;
+  outline: none;
+}
+
+.linksBar .search input::placeholder {
+  color: ghostwhite;
+  opacity: 0.8;
+  font-size: 15px;
+}
+
+.linksBar .search button {
+  border: none;
+  background-color: #fcdc64;
+  overflow: hidden;
+  font-size: 1.5rem;
+  padding-left: 0.5%;
+  vertical-align: bottom;
+}
+
+.linksBar .search button:hover {
+  cursor: pointer;
+  color: ghostwhite;
+}
+
+.titleBar {
+  background: linear-gradient(270deg, #fbc312, #fcdc64);
+  margin-top: 2.5%;
+  left: 0px;
+  right: 0px;
+  height: 5.5%;
+  overflow: hidden;
+  padding-left: 1.5%;
+  display: inline-block;
+  width: 100%;
+}
+
+.titleBar .logo {
+  display: inline-block;
+  overflow: hidden;
+  margin: 0;
+  margin-bottom: 0.2%;
+  height: 100%;
+  width: 4%;
+  text-align: right;
+  font-size: 0.5rem;
+}
+
+.titleBar .title {
+  display: inline-block;
+  margin: 0;
+  height: 100%;
+  padding: 0;
+  width: 18%;
+  overflow: hidden;
+}
+
+.titleBar h1 {
+  color: #2c3443;
+  margin: 0;
+  padding-top: 2%;
+  font-weight: 900;
+}
+
+.titleBar .account {
+  margin: 0;
+  display: inline-block;
+  width: 74%;
+  text-align: right;
+  height: inherit;
+  overflow: hidden;
+  padding-bottom: 0.3%;
+}
+
+.titleBar .account .accountLink {
+  display: inline-block;
+  margin: 0;
+  padding-right: 1.5%;
+  padding-left: 1.5%;
+  vertical-align: middle;
+  height: 100%;
+  top: 0;
+  font-size: 1.4rem;
+}
+
+.titleBar .account .accountLink:hover {
+  border-left: 1px solid #2c3443;
+  border-right: 1px solid #2c3443;
+}
+
+.titleBar .account .accountLink a {
+  margin: 0;
+  color: #2c3443;
+  text-decoration: none;
+}
+
+.titleBar .account .accountLink a:hover {
+  color: ghostwhite;
+}
+</style>
