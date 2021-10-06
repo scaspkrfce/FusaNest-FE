@@ -22,7 +22,9 @@
         </b-iconstack>
       </div>
       <div class="title">
-        <h1>FusaNest</h1>
+        <nuxt-link to="/">
+          FusaNest
+        </nuxt-link>
       </div>
 
       <div class="account">
@@ -100,10 +102,6 @@ export default {
   white-space: nowrap;
   padding-left: 1.5%;
   padding-right: 1.5%;
-}
-
-.linksBar .link {
-  margin: 0;
   height: 100%;
   top: 0;
   font-size: 1.5rem;
@@ -175,63 +173,52 @@ export default {
 }
 
 .titleBar {
-  background: linear-gradient(270deg, #fbc312, #fcdc64);
-  margin-top: 2.5%;
-  left: 0px;
-  right: 0px;
-  height: 5.5%;
-  overflow: hidden;
-  padding-left: 1.5%;
-  display: inline-block;
-  width: 100%;
+    background: linear-gradient(270deg, #fbc312, #fcdc64);
+    margin-top: 57px;
+    padding-left: 1.5%;
+    display: flex;
+    width: 100%;
+    align-items: center;
 }
 
 .titleBar .logo {
-  display: inline-block;
   overflow: hidden;
-  margin: 0;
-  margin-bottom: 0.2%;
-  height: 100%;
   width: 4%;
   text-align: right;
   font-size: 0.5rem;
 }
 
 .titleBar .title {
-  display: inline-block;
-  margin: 0;
-  height: 100%;
-  padding: 0;
   width: 18%;
   overflow: hidden;
 }
 
-.titleBar h1 {
+.titleBar .title a {
   color: #2c3443;
   margin: 0;
-  padding-top: 2%;
   font-weight: 900;
+  font-size: 2.2rem;
+  vertical-align: middle;
 }
 
+.titleBar .title a:hover {
+  text-decoration: none;
+}
 .titleBar .account {
-  margin: 0;
-  display: inline-block;
   width: 74%;
   text-align: right;
-  height: inherit;
-  overflow: hidden;
-  padding-bottom: 0.3%;
 }
 
 .titleBar .account .accountLink {
   display: inline-block;
   margin: 0;
-  padding-right: 1.5%;
+  padding: 0.5%;
+  white-space: nowrap;
   padding-left: 1.5%;
-  vertical-align: middle;
+  padding-right: 1.5%;
   height: 100%;
   top: 0;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
 .titleBar .account .accountLink:hover {

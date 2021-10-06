@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="banner">
     <b-carousel
       id="carousel-1"
       v-model="slide"
@@ -15,17 +15,17 @@
     >
       <!-- Text slides with image -->
       <b-carousel-slide
-        caption="First slide"
-        text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-        img-src="https://picsum.photos/1024/480/?image=52"
+        caption="Bienvenido a FusaNest!"
+        text="Encuentra proyectos de tecnología en tu ciudad."
+        img-src="https://mkt.trato.io/wp-content/uploads/2021/06/kaitlyn-baker-vZJdYl5JVXY-unsplash-2048x1365.jpg"
       />
       <!-- Slides with custom text -->
-      <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=54">
+      <b-carousel-slide img-src="https://mkt.trato.io/wp-content/uploads/2017/04/imagen-blog-14-1.jpeg">
         <h1>Hello world!</h1>
       </b-carousel-slide>
 
       <!-- Slides with image only -->
-      <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=58" />
+      <b-carousel-slide img-src="https://www.pandasecurity.com/es/mediacenter/src/uploads/2020/11/pandasecurity-inteligencia-artificial.jpg" />
 
       <!-- Slides with img slot -->
       <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
@@ -49,11 +49,6 @@
         </p>
       </b-carousel-slide>
     </b-carousel>
-
-    <p class="mt-4">
-      Slide #: {{ slide }}<br>
-      Sliding: {{ sliding }}
-    </p>
   </div>
 </template>
 
@@ -75,3 +70,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+ .banner{
+   max-height: 826px;
+ }
+</style>

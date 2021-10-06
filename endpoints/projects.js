@@ -1,10 +1,21 @@
+import { BASE_URL } from './base-url'
+
 export async function getProjects () {
   try {
-    const response = await fetch('http://localhost:8080/projects', {
+    const response = await fetch(`${BASE_URL}/projects`, {
       method: 'GET',
+      headers: {
+        Accept: 'application/json',
+      },
     })
-    console.log('response', response)
+    const data = await response.json()
+    if (response.status === 200 && data.length) {
+      console.log('data', data)
+      return { data, error: null }
+    }
+
+    return { data: null, error: 'There is no data' }
   } catch (error) {
-    console.log('error', error)
+    return { data: null, error: 'There was an error' }
   }
 }
