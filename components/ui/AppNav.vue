@@ -1,9 +1,14 @@
 <template>
   <nav class="Navigation">
     <div class="linksBar">
-      <div v-for="(navLink, index) in navLinks" :key="index" class="link">
-        <nuxt-link :to="navLink.linkUrl">
-          {{ navLink.linkName }}
+      <div class="link">
+        <nuxt-link to="/projects">
+          Explorar
+        </nuxt-link>
+      </div>
+      <div v-for="item in categories" :key="item.categoryId" class="link">
+        <nuxt-link :to="'/category/'+item.categoryName">
+          {{ item.categoryName }}
         </nuxt-link>
       </div>
       <div class="search">
@@ -44,38 +49,24 @@
 </template>
 
 <script>
+import { getCategories } from '~/endpoints/categories.js'
 export default {
   name: 'Navigation',
-
   data () {
     return {
-      navLinks: [
-        {
-          linkName: 'Explorar',
-          linkUrl: '/projects',
-        },
-        {
-          linkName: 'Apps',
-          linkUrl: '/projects',
-        },
-        {
-          linkName: 'Innovación',
-          linkUrl: '/projects',
-        },
-        {
-          linkName: 'Inteligencia Artificial',
-          linkUrl: '/projects',
-        },
-        {
-          linkName: 'Paginas Web',
-          linkUrl: '/projects',
-        },
-        {
-          linkName: 'Videojuegos',
-          linkUrl: '/projects',
-        },
-      ],
+      categories: null,
+      loading: true,
+      error: false,
     }
+  },
+  async created () {
+    const { data, error } = await getCategories()
+    if (!data && error) {
+      this.error = error
+    } else {
+      this.categories = data
+    }
+    this.loading = false
   },
 }
 </script>
@@ -123,7 +114,6 @@ export default {
 }
 
 .linksBar .search {
-  display: inline-block;
   margin: 0;
   white-space: nowrap;
   padding-right: 5.4%;

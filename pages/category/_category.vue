@@ -18,7 +18,7 @@
 
 <script>
 import AppNav from '~/components/ui/AppNav.vue'
-import { getProjects } from '~/endpoints/projects.js'
+import { getProjectsByCategory } from '~/endpoints/categories.js'
 
 export default {
   components: {
@@ -29,10 +29,11 @@ export default {
       projects: null,
       loading: true,
       error: false,
+      url: this.$nuxt.$route.path,
     }
   },
   async created () {
-    const { data, error } = await getProjects()
+    const { data, error } = await getProjectsByCategory(this.url)
     if (!data && error) {
       this.error = error
     } else {

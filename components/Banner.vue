@@ -70,9 +70,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
- .banner{
-   max-height: 826px;
- }
-</style>
