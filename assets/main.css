@@ -1,5 +1,5 @@
 body {
-    background-color: ghostwhite;
+    background-color: #ebebeb;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,10 +9,9 @@ body {
 }
 
 .main {
-    margin-left: 12%;
-    margin-right: 12%;
+    margin-left: 14%;
+    margin-right: 14%;
     background-color: #2c3443;
-    padding-bottom: 4%;
     box-sizing: border-box;
     min-height: 100vh;
     overflow: hidden;

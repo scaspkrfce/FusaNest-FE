@@ -3,7 +3,7 @@
     <b-carousel
       id="carousel-1"
       v-model="slide"
-      :interval="4000"
+      :interval="5000"
       controls
       indicators
       background="#ababab"
@@ -13,40 +13,26 @@
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
-      <!-- Text slides with image -->
-      <b-carousel-slide
-        caption="Bienvenido a FusaNest!"
-        text="Encuentra proyectos de tecnología en tu ciudad."
-        img-src="https://mkt.trato.io/wp-content/uploads/2021/06/kaitlyn-baker-vZJdYl5JVXY-unsplash-2048x1365.jpg"
-      />
-      <!-- Slides with custom text -->
-      <b-carousel-slide img-src="https://mkt.trato.io/wp-content/uploads/2017/04/imagen-blog-14-1.jpeg">
-        <h1>Hello world!</h1>
+      <b-carousel-slide img-src="../assets/business1.jpg">
+        <h3>Bienvenido a FusaNest!</h3>
+        <nuxt-link to="/projects">
+          Encuentra proyectos de tecnología en tu ciudad
+        </nuxt-link>
+        <p />
       </b-carousel-slide>
-
-      <!-- Slides with image only -->
-      <b-carousel-slide img-src="https://www.pandasecurity.com/es/mediacenter/src/uploads/2020/11/pandasecurity-inteligencia-artificial.jpg" />
-
-      <!-- Slides with img slot -->
-      <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
-      <b-carousel-slide>
-        <template #img>
-          <img
-            class="d-block img-fluid w-100"
-            width="1024"
-            height="480"
-            src="https://picsum.photos/1024/480/?image=55"
-            alt="image slot"
-          >
-        </template>
+      <b-carousel-slide img-src="../assets/stock1.jpg">
+        <h3>Invierte en Ideas Para el Futuro</h3>
+        <nuxt-link to="/registro">
+          Explora nuestros modelos de inversión
+        </nuxt-link>
+        <p />
       </b-carousel-slide>
-
-      <!-- Slide with blank fluid image to maintain slide aspect ratio -->
-      <b-carousel-slide caption="Blank Image" img-blank img-alt="Blank image">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eros felis, tincidunt
-          a tincidunt eget, convallis vel est. Ut pellentesque ut lacus vel interdum.
-        </p>
+      <b-carousel-slide img-src="../assets/job1.jpg">
+        <h3>Obten Financiamiento Para tus Proyectos</h3>
+        <nuxt-link to="/registro">
+          Crea tu cuenta hoy y has crecer tu negocio!
+        </nuxt-link>
+        <p />
       </b-carousel-slide>
     </b-carousel>
   </div>
@@ -70,3 +56,13 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+ .carousel-caption h3{
+   -webkit-text-stroke: 0.5px #2c3443;
+ }
+ .carousel-caption a {
+  color: ghostwhite;
+  text-decoration: none;
+}
+</style>
