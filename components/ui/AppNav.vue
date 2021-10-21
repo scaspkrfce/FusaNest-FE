@@ -106,7 +106,8 @@ export default {
 .linksBar .link a {
   color: #2c3443;
   text-decoration: none;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .linksBar .link a:hover {
@@ -165,7 +166,6 @@ export default {
 .titleBar {
     background: linear-gradient(270deg, #fbc312, #fcdc64);
     margin-top: 57px;
-    padding-left: 1.5%;
     display: flex;
     width: 100%;
     align-items: center;
@@ -173,7 +173,7 @@ export default {
 
 .titleBar .logo {
   overflow: hidden;
-  width: 4%;
+  width: 3.5%;
   text-align: right;
   font-size: 0.5rem;
 }
@@ -195,7 +195,7 @@ export default {
   text-decoration: none;
 }
 .titleBar .account {
-  width: 74%;
+  width: 76%;
   text-align: right;
 }
 
@@ -220,6 +220,7 @@ export default {
   margin: 0;
   color: #2c3443;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .titleBar .account .accountLink a:hover {

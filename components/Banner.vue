@@ -21,7 +21,7 @@
         <p />
       </b-carousel-slide>
       <b-carousel-slide img-src="../assets/stock1.jpg">
-        <h3>Invierte en Ideas Para el Futuro</h3>
+        <h3>Invierte en Ideas para el Futuro</h3>
         <nuxt-link to="/registro">
           Explora nuestros modelos de inversión
         </nuxt-link>
@@ -60,9 +60,13 @@ export default {
 <style scoped>
  .carousel-caption h3{
    -webkit-text-stroke: 0.5px #2c3443;
+    font-size: 2.3rem;
+    font-weight: 800;
+    font-weight: 500;
  }
  .carousel-caption a {
   color: ghostwhite;
   text-decoration: none;
+  font-size: 1.2rem;
 }
 </style>

@@ -2,10 +2,12 @@
   <div>
     <AppNav />
     <div v-if="loading" class="main">
-      loading...
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Cargando...</span>
+      </div>
     </div>
     <div v-else-if="error" class="no-projects">
-      <h2>Lo sentimos! No hemos encontrado proyectos de esta categoría.</h2>
+      <h2>Lo sentimos! No hemos encontrado proyectos en esta categoría.</h2>
       <img src="../../assets/construction1.png">
     </div>
     <div v-else class="main">
@@ -13,6 +15,7 @@
         <h2>{{ item.projectName }}</h2>
         <p>{{ item.projectDescription }}</p>
         <p>Calificación: {{ item.projectRating }}/10</p>
+        <img src="../../assets/Default.png">
       </div>
     </div>
   </div>
@@ -51,13 +54,18 @@ export default {
 .project{
   background-color: #ebebeb;
   margin: 4%;
-  padding: 0.5%;
+  padding: 2%;
   border-radius: 10px;
   color: #2c3443;
 }
 .project:hover{
-  margin: 3.5%;
+  margin: 3.6%;
   box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+}
+.spinner-border{
+  color:ghostwhite;
+  margin-left:4%;
+  margin-top: 1%;
 }
 .no-projects{
   padding-top: 5%;
