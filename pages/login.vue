@@ -16,22 +16,87 @@
     <div class="login-main">
       <h1>Hola de Nuevo!</h1>
       <p>_________________________________________________________</p>
-      <h3>Email:</h3>
-      <p><input type="text" spellcheck="false"> </p>
-      <h3>Contraseña:</h3>
-      <p><input type="text" spellcheck="false"> </p>
-      ¿Aún no tienes una cuenta?
-      <nuxt-link to="/registro">
-        Crea tu perfil hoy dando click aqui!
-      </nuxt-link>
+
+      <ValidationObserver ref="form">
+        <b-form @submit.prevent="onSubmit">
+          <ValidationProvider v-slot="validationContext" name="email" rules="required|email">
+            <b-form-group id="email-group" label="Email:" label-for="email-input">
+              <b-form-input
+                id="email-input"
+                v-model="email"
+                type="email"
+                :state="getValidationState(validationContext)"
+                placeholder="Ingresa tu email"
+                required
+              />
+              <b-form-invalid-feedback id="email-input-feedback">
+                {{ validationContext.errors[0] }}
+              </b-form-invalid-feedback>
+            </b-form-group>
+          </ValidationProvider>
+
+          <ValidationProvider v-slot="validationContext" name="password" rules="required|min:6">
+            <b-form-group id="password-group" label="Contraseña:" label-for="password-input">
+              <b-form-input
+                id="password-input"
+                v-model="password"
+                type="password"
+                :state="getValidationState(validationContext)"
+                placeholder="Ingresa tu contraseña"
+                required
+              />
+              <b-form-invalid-feedback id="password-input-feedback">
+                {{ validationContext.errors[0] }}
+              </b-form-invalid-feedback>
+            </b-form-group>
+          </ValidationProvider>
+
+          <b-button type="submit" variant="primary">
+            Ingresar
+          </b-button>
+        </b-form>
+      </ValidationObserver>
+      <p>
+        ¿Aún no tienes una cuenta?
+        <nuxt-link to="/signup">
+          Crea tu perfil hoy dando click aqui!
+        </nuxt-link>
+      </p>
     </div>
   </div>
 </template>
 
 <script>
 
+import { login } from '~/endpoints/users.js'
 export default {
-  components: {
+  data () {
+    return {
+      email: '',
+      password: '',
+    }
+  },
+  methods: {
+    getValidationState ({ dirty, validated, valid = null }) {
+      return dirty || validated ? valid : null
+    },
+    onSubmit () {
+      this.$refs.form.validate().then((success) => {
+        if (!success) {
+          return
+        }
+        this.submit()
+      })
+    },
+    async submit () {
+      const { data, error } = await login(this.email, this.password)
+      if (data && !error) {
+        this.$store.commit('setSesion', data)
+        this.$router.push('/')
+      } else {
+        alert('El usuario o la contraseña son incorrectos')
+      }
+    },
   },
 }
 </script>
@@ -74,7 +139,7 @@ export default {
   background-color: #2c3443;
   margin-left: 18%;
   margin-right: 10%;
-  margin-top: 13%;
+  margin-top: 12%;
   padding: 3%;
   border-radius: 20px;
   display: inline-block;
@@ -85,16 +150,35 @@ export default {
   color: #fbc312;
   font-weight: 700;
 }
-.login-main h3 {
-  color: ghostwhite;
+.login-main span{
+  color: #fbc312;
   margin-top: 5%;
+  font-size: 1.4rem;
+}
+.login-main span .invalid-feedback {
+  color: ghostwhite;
+  font-size: 1rem;
 }
 .login-main a {
   text-decoration: none;
   color: ghostwhite;
 }
 .login-main input[type="text"] {
-  width: 80%;
+  width: 100%;
+}
+
+.login-main button{
+  background-color: #fbc312;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 3.5%;
+  margin-bottom: 5.5%;
+  margin-left: 22.5%;
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding-left: 18%;
+  padding-right: 18%;
+  color: #2c3443;
 }
 
 </style>

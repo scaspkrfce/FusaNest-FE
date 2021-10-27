@@ -63,6 +63,7 @@ export default {
     font-size: 2.3rem;
     font-weight: 800;
     font-weight: 500;
+    color: ghostwhite;
  }
  .carousel-caption a {
   color: ghostwhite;

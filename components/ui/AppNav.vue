@@ -31,17 +31,28 @@
           FusaNest
         </nuxt-link>
       </div>
-
-      <div class="account">
+      <div v-if="sesion == undefined" class="account">
         <div class="accountLink">
           <nuxt-link to="/login">
             Login
           </nuxt-link>
         </div>
         <div class="accountLink">
-          <nuxt-link to="/registro">
+          <nuxt-link to="/signup">
             Registrarse
           </nuxt-link>
+        </div>
+      </div>
+      <div v-else class="account">
+        <div class="accountLink">
+          <nuxt-link to="/profile">
+            Perfil
+          </nuxt-link>
+        </div>
+        <div class="accountLink" @click="logout()">
+          <div class="logout">
+            Cerrar Sesión
+          </div>
         </div>
       </div>
     </div>
@@ -57,6 +68,7 @@ export default {
       categories: null,
       loading: true,
       error: false,
+      sesion: undefined,
     }
   },
   async created () {
@@ -65,8 +77,23 @@ export default {
       this.error = error
     } else {
       this.categories = data
+      this.getSesion()
     }
     this.loading = false
+  },
+  methods:
+  {
+    getSesion () {
+      this.sesion = this.$store.state.sesion
+    },
+    logout () {
+      if (this.$nuxt.$route.path === '/') {
+        window.location.reload()
+      } else {
+        window.location.href = '/'
+      }
+      this.$store.commit('logout')
+    },
   },
 }
 </script>
@@ -225,5 +252,10 @@ export default {
 
 .titleBar .account .accountLink a:hover {
   color: ghostwhite;
+}
+
+.titleBar .account .accountLink .logout:hover {
+  color: ghostwhite;
+  cursor: pointer;
 }
 </style>
