@@ -100,9 +100,12 @@ export default {
   color: ghostwhite;
   margin-top: 5%;
 }
+.signup-main p {
+  color: ghostwhite;
+}
 .signup-main a {
   text-decoration: none;
-  color: ghostwhite;
+  color: #fbc312;
 }
 .signup-main input[type="text"] {
   width: 100%;

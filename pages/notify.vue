@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="login-main">
-      <h1>Hola de Nuevo!</h1>
+      <h1>Notificar a mi correo</h1>
       <p>_________________________________________________________</p>
 
       <ValidationObserver ref="form">
@@ -34,58 +34,11 @@
               </b-form-invalid-feedback>
             </b-form-group>
           </ValidationProvider>
-
-          <div class="password">
-            <ValidationProvider v-slot="validationContext" name="password" :rules="{required, min:12, regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[0-9a-zA-Z!@#$%^&*()_+]{8,}$/}">
-              <b-form-group id="password-group" label="Contraseña:" label-for="password-input">
-                <b-form-input
-                  v-if="showPassword"
-                  id="password-input"
-                  v-model="password"
-                  class="password-input"
-                  type="text"
-                  :state="getValidationState(validationContext)"
-                  placeholder="Ingresa tu contraseña"
-                  required
-                />
-                <b-form-input
-                  v-else
-                  id="password-input"
-                  v-model="password"
-                  class="password-input"
-                  type="password"
-                  :state="getValidationState(validationContext)"
-                  placeholder="Ingresa tu contraseña"
-                  required
-                />
-                <div v-if="showPassword" class="toggleShow">
-                  <b-button @click="toggleShow">
-                    <b-icon icon="eye-slash-fill" />
-                  </b-button>
-                </div>
-                <div v-else class="toggleShow">
-                  <b-button @click="toggleShow">
-                    <b-icon icon="eye-fill" />
-                  </b-button>
-                </div>
-                <b-form-invalid-feedback id="password-input-feedback">
-                  {{ validationContext.errors[0] }}
-                </b-form-invalid-feedback>
-              </b-form-group>
-            </ValidationProvider>
-          </div>
-
           <b-button type="submit" variant="primary">
-            Ingresar
+            Enviar
           </b-button>
         </b-form>
       </ValidationObserver>
-      <p>
-        ¿Olvidaste tu contraseña?
-        <nuxt-link to="/notify">
-          haz click aqui para recuperarla!
-        </nuxt-link>
-      </p>
       <p>
         ¿Aún no tienes una cuenta?
         <nuxt-link to="/signup">
@@ -136,7 +89,6 @@ export default {
 </script>
 
 <style scoped>
-
 .login{
   overflow: hidden;
 }
@@ -178,7 +130,6 @@ export default {
   border-radius: 20px;
   display: inline-block;
   color: #fbc312;
-  max-width: 29.7%;
 }
 .login-main h1 {
   text-align: center;
@@ -194,27 +145,12 @@ export default {
   color: ghostwhite;
   font-size: 1rem;
 }
-.login-main p {
-  color: ghostwhite;
-}
-
 .login-main a {
   text-decoration: none;
-  color: #fbc312;
+  color: ghostwhite;
 }
-
 .login-main input[type="text"] {
   width: 100%;
-}
-
-.login-main .password {
-  display: inline-block;
-  width: 100%;
-}
-.login-main #password-input {
-  width: 91.2%;
-  margin: 0%;
-  display: inline-block;
 }
 
 .login-main button{
@@ -231,22 +167,4 @@ export default {
   color: #2c3443;
 }
 
-.login-main .password .toggleShow{
-  display: inline-block;
-  background-color: ghostwhite;
-  margin:0%;
-  height: 40px;
-  width:38px;
-  border-radius: 8px;
-}
-.login-main .password .toggleShow button{
-  display: inline-block;
-  text-align: center;
-  background-color: ghostwhite;
-  margin:0%;
-  padding: 0%;
-  padding-top: 10%;
-  width: 100%;
-  height: 100%;
-}
 </style>

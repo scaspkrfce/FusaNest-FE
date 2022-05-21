@@ -12,8 +12,8 @@
         </nuxt-link>
       </div>
       <div class="search">
-        <input type="text" placeholder="Busqueda.." spellcheck="false">
-        <button type="button">
+        <input type="text" placeholder="Encuentra tu proyecto..." spellcheck="false">
+        <button type="button" @click="search()">
           <b-icon icon="search" scale="0.8" style="color: #2c3443" />
         </button>
       </div>
@@ -44,8 +44,13 @@
         </div>
       </div>
       <div v-else class="account">
-        <div class="accountLink">
-          <nuxt-link to="/profile">
+        <div v-if="admin === true" class="accountLink">
+          <nuxt-link to="/admin">
+            Administración
+          </nuxt-link>
+        </div>
+        <div v-else class="accountLink">
+          <nuxt-link to="/userProfile">
             Perfil
           </nuxt-link>
         </div>
@@ -69,6 +74,7 @@ export default {
       loading: true,
       error: false,
       sesion: undefined,
+      admin: false,
     }
   },
   async created () {
@@ -85,6 +91,7 @@ export default {
   {
     getSesion () {
       this.sesion = this.$store.state.sesion
+      this.admin = this.$store.state.admin
     },
     logout () {
       if (this.$nuxt.$route.path === '/') {
@@ -93,6 +100,13 @@ export default {
         window.location.href = '/'
       }
       this.$store.commit('logout')
+    },
+    search () {
+      if (this.$nuxt.$route.path === '/projects') {
+        window.location.reload()
+      } else {
+        window.location.href = '/projects'
+      }
     },
   },
 }
@@ -161,19 +175,19 @@ export default {
   border: none;
   width: 110%;
   padding: 2.5%;
-  padding-left: 5.5%;
+  padding-left: 6.5%;
   background-color: #2c3443;
   color: ghostwhite;
   border-radius: 15px;
   overflow: hidden;
-  font-size: 15px;
+  font-size: 1rem;
   outline: none;
 }
 
 .linksBar .search input::placeholder {
   color: ghostwhite;
   opacity: 0.8;
-  font-size: 15px;
+  font-size: 1.1rem;
 }
 
 .linksBar .search button {

@@ -10,7 +10,7 @@ export async function getProjects () {
     })
     const data = await response.json()
     if (response.status === 200 && data.length) {
-      console.log('data', data)
+      console.log('projects', data)
       return { data, error: null }
     }
 

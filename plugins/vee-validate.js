@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate'
-import { required, email, min } from 'vee-validate/dist/rules'
+import { required, email, min, regex } from 'vee-validate/dist/rules'
 
 extend('required', {
   ...required,
@@ -14,7 +14,12 @@ extend('email', {
 
 extend('min', {
   ...min,
-  message: '6 caracteres mínimos son requeridos',
+  message: 'la contraseña debe tener un mínimo de 12 caracteres',
+})
+
+extend('regex', {
+  ...regex,
+  message: 'la contraseña debe contener numeros, caracteres especiales y mayusculas',
 })
 
 Vue.component('ValidationObserver', ValidationObserver)

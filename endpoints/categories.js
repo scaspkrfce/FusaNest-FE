@@ -10,7 +10,7 @@ export async function getCategories () {
     })
     const data = await response.json()
     if (response.status === 200 && data.length) {
-      console.log('data', data)
+      console.log('categories', data)
       return { data, error: null }
     }
 
@@ -30,7 +30,7 @@ export async function getProjectsByCategory (name) {
     })
     const data = await response.json()
     if (response.status === 200 && data.length) {
-      console.log('data', data)
+      console.log('projects by category', data)
       return { data, error: null }
     }
 

@@ -1,11 +1,7 @@
 <template>
   <div>
     <AppNav />
-    <div v-if="loading" class="main">
-      <div class="spinner-border" role="status">
-        <span class="sr-only">Cargando...</span>
-      </div>
-    </div>
+    <Loading v-if="loading" class="main" />
     <div v-else-if="error" class="no-projects">
       Lo sentimos! No hemos encontrado proyectos en esta categoría.
       <p>______________________________________________________________________</p>
@@ -24,11 +20,13 @@
 
 <script>
 import AppNav from '~/components/ui/AppNav.vue'
+import Loading from '~/components/ui/Loading.vue'
 import { getProjects } from '~/endpoints/projects.js'
 
 export default {
   components: {
     AppNav,
+    Loading,
   },
   data () {
     return {
@@ -57,16 +55,13 @@ export default {
   padding: 2%;
   border-radius: 10px;
   color: #2c3443;
+  border: 5px solid #fbc312;
 }
 .project:hover{
   margin: 3.6%;
   box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
 }
-.spinner-border{
-  color:ghostwhite;
-  margin-left: 4%;
-  margin-top: 1%;
-}
+
 .no-projects{
   padding-top: 3%;
   background-color: #ebebeb;

@@ -57,6 +57,7 @@ export default {
   padding: 2%;
   border-radius: 10px;
   color: #2c3443;
+  border: 5px solid #fbc312;
 }
 .project:hover{
   margin: 3.6%;
