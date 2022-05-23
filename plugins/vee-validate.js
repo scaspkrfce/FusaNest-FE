@@ -14,7 +14,7 @@ extend('email', {
 
 extend('min', {
   ...min,
-  message: 'la contraseña debe tener un mínimo de 12 caracteres',
+  message: 'el campo debe tener un mínimo de {min} caracteres',
 })
 
 extend('regex', {

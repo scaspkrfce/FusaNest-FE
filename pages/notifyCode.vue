@@ -40,9 +40,21 @@
         </b-form>
       </ValidationObserver>
       <p>
+        ¿Ya tienes una cuenta?
+        <nuxt-link to="/login">
+          Inicia sesión dando click aqui!
+        </nuxt-link>
+      </p>
+      <p>
         ¿Aún no tienes una cuenta?
         <nuxt-link to="/signup">
           Crea tu perfil hoy dando click aqui!
+        </nuxt-link>
+      </p>
+      <p>
+        ¿Ya cuentas con un codigo de seguridad?
+        <nuxt-link to="/restorePassword">
+          Recupera tu contraseña dando click aqui!
         </nuxt-link>
       </p>
     </div>
@@ -51,13 +63,12 @@
 
 <script>
 
-import { login } from '~/endpoints/users.js'
+import { sendSecurityCode } from '~/endpoints/access.js'
 export default {
   data () {
     return {
       email: '',
-      password: '',
-      showPassword: false,
+      isOTP: 0,
     }
   },
   methods: {
@@ -72,17 +83,19 @@ export default {
         this.submit()
       })
     },
-    toggleShow () {
-      this.showPassword = !this.showPassword
-    },
     async submit () {
-      const { data, error } = await login(this.email, this.password)
+      const { data, error } = await sendSecurityCode(this.email)
       if (data && !error) {
-        this.$store.commit('setSesion', data)
-        this.$router.push('/')
+        this.isOTP = data
+        if (this.isOTP === 1) {
+          alert('Ya se ha enviado un correo con un codigo de reactivación')
+        } else {
+          alert('Se ha enviado un codigo de seguridad a tu correo')
+        }
       } else {
-        alert('El usuario o la contraseña son incorrectos')
+        alert('El correo electronico que ingresaste no está registrado')
       }
+      this.isOTP = 0
     },
   },
 }
@@ -123,7 +136,7 @@ export default {
 
 .login-main {
   background-color: #2c3443;
-  margin-left: 18%;
+  margin-left: 16%;
   margin-right: 10%;
   margin-top: 12%;
   padding: 3%;

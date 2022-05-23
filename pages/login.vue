@@ -82,7 +82,7 @@
       </ValidationObserver>
       <p>
         ¿Olvidaste tu contraseña?
-        <nuxt-link to="/notify">
+        <nuxt-link to="/notifyCode">
           haz click aqui para recuperarla!
         </nuxt-link>
       </p>
